@@ -1,5 +1,7 @@
 import React from 'react';
 import './ProductList.css'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { addItemToCart } from './CartSlice';// Action to add product to cart
 
 const ProductList = () => {
 
@@ -15,6 +17,9 @@ const ProductList = () => {
     {id: 12, name: 'Asus Tuf gaming', price: 42000 },
     {id: 13, name: 'Alienware spx 13', price: 54000 }
   ]
+
+  const dispatch = useDispatch();
+const cartItems = useSelector(state => state.cart.cartItems); // Get cart items globally
 
   return (
     <div className="product-list">
