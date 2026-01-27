@@ -6,8 +6,15 @@ const ProductList = () => {
   const products = [
     { id: 1, name: 'Product A', price: 60 },
     { id: 2, name: 'Product B', price: 75 },
-    { id: 3, name: 'Product C', price: 30 },
+    { id: 3, name: 'Product C', price: 30 }
   ];
+
+  const laptops = [
+    {id: 10, name: 'Lenovo g15', price: 4200 },
+    {id: 11, name: 'Macbook air 15', price: 32000 },
+    {id: 12, name: 'Asus Tuf gaming', price: 42000 },
+    {id: 13, name: 'Alienware spx 13', price: 54000 }
+  ]
 
   return (
     <div className="product-list">
@@ -21,9 +28,22 @@ const ProductList = () => {
             </button>
 
           </li>
+        ))};
+
+        {laptops.map(laptop => (
+        <li key={laptop.id} className='product-list-item'>
+          <h2>Our Laptops</h2>
+          <p>Name:{laptop.name} - Price:{laptop.price}</p>
+          <button>
+            Add to Cart
+          </button>
+
+        </li>  
         )
 
         )}
+
+        )
      
       </ul>
     </div>
