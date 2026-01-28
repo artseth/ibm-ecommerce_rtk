@@ -35,20 +35,17 @@ const cartItems = useSelector(state => state.cart.cartItems); // Get cart items 
           </li>
         ))};
 
-        {laptops.map(laptop => (
-        <li key={laptop.id} className='product-list-item'>
-          <h2>Our Laptops</h2>
-          <p>Name:{laptop.name} - Price:{laptop.price}</p>
-          <button>
-            Add to Cart
-          </button>
+        {products.map(product => (
+          <li key={product.id} className='product-list-item'>
+            <span>Name:{product.name} - Price:{product.price}</span>
+            <button>
+              Add to Cart
+            </button>
+            
+          </li>
+        ))}
 
-        </li>  
-        )
-
-        )}
-
-        )
+        
      
       </ul>
     </div>
