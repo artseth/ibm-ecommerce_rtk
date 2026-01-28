@@ -7,6 +7,22 @@ const dispatch = useDispatch();
 const cartItems = useSelector(state => state.cart.cartItems)
 const totalAmount = cartItems.reduce ((total, item) => total + item.price * item.quantity, 0);
 
+const handleRemoveItem = ItemId => {
+    dispatch(removeItemFromCart(ItemId));
+};
+
+const handleClearCart = () => {
+    dispatch(clearCart());
+};
+
+const handleIncreaseQuantity = ItemId => {
+    dispatch(increaseItemQuantity(ItemId));
+};
+
+const handleDecreaseQuantity = ItemId => {
+    dispatch(decreaseItemQuantity(ItemId));
+};
+
 const ShoppingCart = () => {
 
     return(
