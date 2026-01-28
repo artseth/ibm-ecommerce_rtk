@@ -1,5 +1,27 @@
 import React from 'react';
 import './ShoppingCart.css'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItemFromCart, clearCart, increaseItemQuantity, decreaseItemQuantity } from './CartSlice';
+
+const dispatch = useDispatch();
+const cartItems = useSelector (state => state.cart.cartItems);
+const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+const handleRemoveItem = itemId => {
+    dispatch(removeItemFromCart(itemId));
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
+  const handleIncreaseQuantity = itemId => {
+    dispatch(increaseItemQuantity(itemId));
+  };
+
+  const handleDecreaseQuantity = itemId => {
+    dispatch(decreaseItemQuantity(itemId));
+  };
 
 const ShoppingCart = () => {
 
