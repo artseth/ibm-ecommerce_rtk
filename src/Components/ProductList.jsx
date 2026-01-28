@@ -9,7 +9,7 @@ const ProductList = () => {
     { id: 1, name: 'Product A', price: 60 },
     { id: 2, name: 'Product B', price: 75 },
     { id: 3, name: 'Product C', price: 30 }
-  ];
+  ]
 
   const laptops = [
     {id: 10, name: 'Lenovo g15', price: 4200 },
@@ -19,7 +19,7 @@ const ProductList = () => {
   ]
 
   const dispatch = useDispatch();
-const cartItems = useSelector(state => state.cart.cartItems); // Get cart items globally
+  const cartItems = useSelector(state => state.cart.cartItems); // Get cart items globally
 
   return (
     <div className="product-list">
@@ -28,12 +28,16 @@ const cartItems = useSelector(state => state.cart.cartItems); // Get cart items 
         {products.map( product => (
           <li key={product.id} className='product-list-item'>
             <span>Name:{product.name} - Price${product.price}</span>
-            <button>
-              Add to Cart
+            <button
+                className={`add-to-cart-btn ${cartItems.some(item => item.id === product.id) ? 'disabled' : ''}`}
+                onClick={() => handleAddToCart(product)}
+                disabled={cartItems.some(item => item.id === product.id)} // Disable if already in cart
+            >
+                {cartItems.some(item => item.id === product.id) ? 'Added' : 'Add to Cart'}
             </button>
 
           </li>
-        ))};
+        ))}
         <h2 className='product-list-title'>Laptops</h2>
         {laptops.map(laptop => (
           
