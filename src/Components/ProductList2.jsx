@@ -21,10 +21,6 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state.cart.cartItems); // Get cart items globally
 
-  const handleAddToCart = product => {
-    dispatch(addItemToCart(product));
-  }
-
   return (
     <div className="product-list">
       <h2 className="product-list-title">Products</h2>
@@ -32,13 +28,14 @@ const ProductList = () => {
         {products.map( product => (
           <li key={product.id} className='product-list-item'>
             <span>Name:{product.name} - Price${product.price}</span>
-            <button
-                className={`add-to-cart-btn ${cartItems.some(item => item.id === product.id) ? 'disabled' : ''}`}
-                onClick={() => handleAddToCart(product)}
-                disabled={cartItems.some(item => item.id === product.id)} // Disable if already in cart
-            >
-                {cartItems.some(item => item.id === product.id) ? 'Added' : 'Add to Cart'}
+
+            <button className={`add-to-cart-btn ${cartItems.some(addItemToCart.id === product.id) ? 'disabled' : ''}`}
+            onClick={ () => handleAddToCart(product) }
+            disabled = {cartItems.some(item = item.id === product.id)}>
+                {cartItems.some(item = item.id === product.id) ? 'Added' : 'Add to Cart'}
+
             </button>
+       
 
           </li>
         ))}
@@ -48,12 +45,8 @@ const ProductList = () => {
           <li key={laptop.id} className='product-list-item'>
             <span>Name:{laptop.name} - Price:${laptop.price}</span>
             
-            <button className={`add-to-cart-btn ${cartItems.some(item => item.id === laptop.id) ? 'disabled' : ''}`}
-              onClick={() => handleAddToCart(laptop) }
-              disabled = {cartItems.some(item => item.id === laptop.id)}
-             >
-                {cartItems.some(item => item.id === laptop.id) ? 'Added' : 'Add to Cart'}
-              
+            <button>
+              Add to Cart
             </button>
             
           </li>
